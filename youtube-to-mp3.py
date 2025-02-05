@@ -1,8 +1,12 @@
 import yt_dlp
 import os
 
-def baixar_audio_youtube(url, pasta_saida=/Users/luancaue/Musica/Youtube Music):
+def baixar_audio_youtube(url, pasta_saida=""):
     try:
+        # Se o usuário não fornecer um caminho, usa o diretório atual
+        if not pasta_saida:
+            pasta_saida = os.getcwd()  # Diretório atual
+
         # Criar pasta de saída se não existir
         if not os.path.exists(pasta_saida):
             os.makedirs(pasta_saida)
@@ -25,4 +29,7 @@ def baixar_audio_youtube(url, pasta_saida=/Users/luancaue/Musica/Youtube Music):
 # Exemplo de uso
 if __name__ == "__main__":
     url_video = input("Cole o link do YouTube: ")
-    baixar_audio_youtube(url_video)
+    pasta_saida = input("Digite o caminho da pasta onde deseja salvar o áudio (ou deixe em branco para salvar no diretório atual): ")
+
+    # Chama a função com o caminho fornecido pelo usuário
+    baixar_audio_youtube(url_video, pasta_saida)
