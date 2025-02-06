@@ -1,22 +1,23 @@
-document.querySelector("form").addEventListener("submit", function(event) {
+// O JavaScript aqui pode ser usado para exibir o status de download, mas o comportamento principal já ocorre no Flask
+document.querySelector('form').addEventListener('submit', function (event) {
     event.preventDefault();
-    const urlInput = document.getElementById("url").value;
-    const loading = document.getElementById("loading");
-    const resultDiv = document.getElementById("result");
+    const url = document.querySelector('#url').value;
+    document.getElementById('status').innerText = "Baixando áudio...";
 
-    // Exibir o loading
-    loading.style.display = "block";
-    resultDiv.textContent = "";  // Limpa o resultado anterior
-
-    fetch("/baixar", {
-        method: "POST",
+    fetch('/baixar', {
+        method: 'POST',
         body: new URLSearchParams({
-            url: urlInput
-        })
+            'url': url
+        }),
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        }
     })
     .then(response => response.text())
-    .then(html => {
-        document.body.innerHTML = html;  // Atualiza a página com a resposta
-        loading.style.display = "none";   // Esconde o loading
+    .then(data => {
+        document.getElementById('status').innerText = data;
+    })
+    .catch(error => {
+        document.getElementById('status').innerText = "Erro ao tentar baixar o áudio.";
     });
 });

@@ -16,7 +16,7 @@ def baixar_audio():
             'format': 'bestaudio/best',
             'extractaudio': True,  # Baixar apenas áudio
             'audioquality': 1,  # Melhor qualidade
-            'outtmpl': 'downloads',  # Defina o nome do arquivo de saída
+            'outtmpl': 'downloads/%(id)s.%(ext)s',  # Defina o nome do arquivo de saída
         }
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
@@ -28,6 +28,3 @@ def baixar_audio():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
