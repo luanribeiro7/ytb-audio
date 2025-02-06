@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YouTube to MP3</title>
+        <!-- Link para o arquivo CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+    
+<body>
+    <div class="container">
+        <h1>Baixar Áudio do YouTube</h1>
+        <form action="/baixar" method="POST">
+            <input type="text" name="url" id="url" placeholder="Cole o link do YouTube" required>
+            <button type="submit">Baixar Áudio</button>
+        </form>
+        <div id="loading" style="display: none;">Baixando...</div>
+        <div id="result">{{ result }}</div> <!-- Exibe o resultado -->
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
