@@ -51,9 +51,5 @@ Flask → Framework web em Python
 yt-dlp → Biblioteca para baixar vídeos/áudios do YouTube
 HTML + CSS + JavaScript → Interface web
 Python - Backend 
-📜 Licença
-Este projeto é open-source
 
 📌 Feito por Luan Ribeiro
-
-Caso queira adicionar mais informações, me avise! 🚀
